@@ -48,4 +48,8 @@ export class MainComponent implements OnInit {
     delete this.lista[indexPerson].deleted
   }
 
+  clickPerson(evento){
+    console.log("Meu evento é: ", evento)
+  }
+
 }
