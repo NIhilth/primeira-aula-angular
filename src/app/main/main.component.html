@@ -1,0 +1,48 @@
+<div>
+  <input type="text" [(ngModel)]="name" placeholder="Nome">
+  <br>
+  <br />
+  <input type="text" [(ngModel)]="surname" placeholder="Sobrenome">
+  <br>
+  <br />
+  <input type="date" [(ngModel)]="data">
+  <br>
+  <br />
+  Minhas Informações: {{name}} {{surname}} {{data}}
+  <br>
+  <br />
+  <button (click)="alertarNome()">Exibir nome</button>
+  <br>
+  <br />
+  <h1>Lista Pessoas: </h1>
+
+  <ul>
+    <div *ngFor="let pessoa of lista; let i = index">
+      <li *ngIf="pessoa.deleted != true">
+        <app-list-item [personItem]="pessoa">
+          <button (click)="selectPerson(pessoa, i)">Selecionar pessoa</button>
+          <button (click)="deletePerson( i)">Excluir pessoa</button>
+        </app-list-item>
+        <br>
+      </li>
+      <br>
+      <br />
+    </div>
+
+  </ul>
+
+  <h1>Lista Pessoas Deletadas: </h1>
+
+  <ul>
+    <div *ngFor="let pessoa of lista; let i = index">
+      <li *ngIf="pessoa.deleted == true">
+        <app-list-item [personItem]="pessoa">
+          <button (click)="restorePerson( i)">Restaurar pessoa</button>
+        </app-list-item>
+        <br>
+      </li>
+      <br>
+      <br />
+    </div>
+  </ul>
+</div>
